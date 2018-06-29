@@ -96,6 +96,9 @@ symbols, emojis, greek letters, as well as fall backs for."
   (unless (minibufferp (current-buffer))
     (auto-complete-mode 1)))
 
+;; auto-pair
+(electric-pair-mode 1)
+
 ;; line numbers
 (global-linum-mode t)
 (setq linum-format "%d ")
