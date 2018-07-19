@@ -99,6 +99,11 @@ symbols, emojis, greek letters, as well as fall backs for."
 ;; auto-pair
 (electric-pair-mode 1)
 
+;; highlight current line
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "rgba(0,0,0,0.1)")
+(set-face-foreground 'highlight nil)
+
 ;; line numbers
 (global-linum-mode t)
 (setq linum-format "%d ")
