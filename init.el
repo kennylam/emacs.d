@@ -129,4 +129,4 @@ symbols, emojis, greek letters, as well as fall backs for."
 (setq column-number-mode t)
 
 (setq scss-indent-offset 2)
-;; (setq css-indent-offset 2)
+(setq css-indent-offset 2)
