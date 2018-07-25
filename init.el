@@ -127,6 +127,9 @@ symbols, emojis, greek letters, as well as fall backs for."
  ;; 2 spaces
  tab-width 2)
 (setq column-number-mode t)
-
+;; file specific tab-widths
 (setq scss-indent-offset 2)
-;; (setq css-indent-offset 2)
+(setq css-indent-offset 2)
+
+;; paren highlight matching
+(show-paren-mode 1)
