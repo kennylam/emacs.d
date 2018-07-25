@@ -133,3 +133,4 @@ symbols, emojis, greek letters, as well as fall backs for."
 
 ;; paren highlight matching
 (show-paren-mode 1)
+
