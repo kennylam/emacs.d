@@ -134,3 +134,6 @@ symbols, emojis, greek letters, as well as fall backs for."
 ;; paren highlight matching
 (show-paren-mode 1)
 
+;; go away bell
+(setq ring-bell-function 'ignore)
+
