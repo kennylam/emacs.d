@@ -142,3 +142,10 @@ symbols, emojis, greek letters, as well as fall backs for."
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
+
+;; put file info in title bar
+(setq frame-title-format
+      '(buffer-file-name "%b - %f" ; File buffer
+       (dired-directory dired-directory ; Dired buffer
+       (revert-buffer-function "%b" ; Buffer Menu
+       ("%b - Dir: " default-directory))))) ; Plain buffer
