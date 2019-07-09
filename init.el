@@ -134,6 +134,7 @@ symbols, emojis, greek letters, as well as fall backs for."
 ;; file specific tab-widths
 (setq scss-indent-offset 2)
 (setq css-indent-offset 2)
+(setq js-indent-level 2)
 
 ;; paren highlight matching
 (show-paren-mode 1)
