@@ -5,5 +5,4 @@ auto-save-list
 *.*~
 
 # installed package stuff
-elpa
 *.dat
