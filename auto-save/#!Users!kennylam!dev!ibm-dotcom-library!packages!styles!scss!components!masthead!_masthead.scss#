@@ -1,0 +1,219 @@
+//
+// Copyright IBM Corp. 2016, 2018
+init//
+// This source code is licensed under the Apache-2.0 license found in the
+// LICENSE file in the root directory of this source tree.
+//
+@import '../../globals/imports';
+
+/// @access private
+/// @group dotcom-shell
+
+$search-transition: cubic-bezier(0.2, 0, 0.38, 0.9);
+$search-transition-timing: 95ms;
+
+@mixin masthead {
+  .#{$prefix}--header {
+    transition-timing-function: $search-transition;
+    background: $ui-background;
+    border-bottom: 1px solid $ui-03;
+    width: 100%;
+    position: relative;
+
+    &__logo {
+      padding: 0 $spacing-07;
+      position: relative;
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: carbon--mini-units(3);
+        width: carbon--rem(1px);
+        background-color: $ui-03;
+      }
+    }
+
+    &__global {
+      height: auto;
+      flex: 0;
+    }
+
+    &__nav {
+      a.#{$prefix}--header__menu-item[role='menuitem'] {
+        color: $text-01;
+
+        &:hover {
+          background-color: $ui-01;
+          > svg {
+            fill: $text-01;
+          }
+        }
+
+        &:active,
+        &:focus {
+          background-color: $ui-01;
+          > svg {
+            fill: $text-01;
+          }
+
+          border-color: $interactive-01;
+        }
+      }
+
+      .#{$prefix}--header__menu-title[role='menuitem'][aria-expanded='true'] {
+        background-color: $ui-01;
+        + .#{$prefix}--header__menu {
+          background-color: $ui-02;
+          .#{$prefix}--header__menu-item {
+            &:hover {
+              color: $text-01;
+              background-color: $ui-01;
+            }
+          }
+        }
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__action {
+      > {
+        svg {
+          fill: $text-01;
+        }
+      }
+
+      &:hover {
+        background-color: $ui-01;
+        transition-duration: $search-transition-timing;
+        > {
+          svg {
+            fill: $text-01;
+          }
+        }
+      }
+
+      &:focus,
+      &:active {
+        border-color: $interactive-01;
+        background-color: $ui-01;
+      }
+
+      .#{$prefix}--overflow-menu {
+        height: $spacing-09;
+
+        &.#{$prefix}--overflow-menu--open {
+          box-shadow: none;
+          outline: 2px solid $interactive-01;
+        }
+
+        &:hover {
+          background: none;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+
+      &[aria-label='User Profile'] {
+        outline: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &__menu[role='menu'] {
+      li {
+        padding: 0 $spacing-05;
+
+        &:hover {
+          background-color: $ui-01;
+        }
+
+        &:last-of-type {
+          .#{$prefix}--header__menu-item {
+            border: none;
+          }
+        }
+      }
+
+      .#{$prefix}--header__menu-item {
+        border-bottom: 1px solid $ui-03;
+        padding: 0;
+      }
+    }
+
+    .#{$prefix}--header__menu-arrow {
+      fill: $text-01;
+      &:hover {
+        fill: $text-01;
+      }
+    }
+
+    &__search--close {
+      overflow: hidden;
+      width: 0;
+      border: none;
+      outline: none;
+    }
+
+    &__search--search {
+      border: none;
+      outline: none;
+      width: $spacing-09;
+    }
+  }
+
+  a.#{$prefix}--header__name {
+    color: $text-01;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: $spacing-07;
+
+    &:hover {
+      color: $text-01;
+    }
+  }
+
+  .#{$prefix}--overflow-menu-options {
+    background-color: $ui-background;
+    z-index: 5999;
+
+    &__btn {
+      color: $text-01;
+
+      &:hover {
+        background-color: $ui-01;
+      }
+    }
+
+    &__option {
+      &:hover {
+        background-color: $ui-01;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // masthead profile menu
+  .#{$prefix}--overflow-menu-options__btn {
+    text-decoration: none;
+  }
+}
+
+@include exports('masthead') {
+  @include masthead;
+}
