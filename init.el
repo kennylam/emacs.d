@@ -17,12 +17,6 @@
 ;; thsi is the one that sets tabs to 2 spaces woohoo
 (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
 
-;; flycheck
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-;; use eslint with web-mode for jsx files
-(flycheck-add-mode 'javascript-eslint 'web-mode)
-
 ;;; Fonts
 
 ;; We use these fonts:
