@@ -3,9 +3,10 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.njk\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
@@ -14,8 +15,13 @@
 
 (package-initialize)
 
-;; thsi is the one that sets tabs to 2 spaces woohoo
+;; HOOKS
+;; tabs to 2 spaces woohoo
 (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+;; prettier
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook 'prettier-js-mode)
+(add-hook 'markdown-mode-hook 'prettier-js-mode)
 
 ;;; Fonts
 
@@ -69,7 +75,6 @@ symbols, emojis, greek letters, as well as fall backs for."
   (set-fontset-font t nil (font-spec :family "Apple Symbols")
                     frame 'append))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -80,7 +85,7 @@ symbols, emojis, greek letters, as well as fall backs for."
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" default)))
  '(package-selected-packages
    (quote
-    (magit find-file-in-project flycheck json-mode yaml-mode markdown-mode auto-complete sass-mode pug-mode zenburn-theme solarized-theme rjsx-mode))))
+    (prettier-js magit find-file-in-project flycheck json-mode yaml-mode markdown-mode auto-complete sass-mode pug-mode zenburn-theme solarized-theme rjsx-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -89,6 +94,12 @@ symbols, emojis, greek letters, as well as fall backs for."
  )
 
 ;; my custom stuff
+
+;; use project prettier files
+(eval-after-load 'web-mode
+    '(progn
+       (add-hook 'web-mode-hook #'add-node-modules-path)
+       (add-hook 'web-mode-hook #'prettier-js-mode)))
 
 ;; load default theme
 (load-theme 'zenburn t)
